@@ -33,7 +33,7 @@ class ToastrFlash extends Toastr
 
                 echo Toastr::widget([
                     'type' => $this->typeAlert[$type],
-                    'title' => yii\helpers\Html::encode($data['message']),
+                    'title' => yii\helpers\Html::encode($data['title']),
                     'message' => yii\helpers\Html::encode($data['message']),
                     'options' => $this->options
                 ]);
