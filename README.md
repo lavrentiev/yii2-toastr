@@ -2,7 +2,7 @@ Yii2 - Javascript Toast Notifications
 =====================================
 Simple javascript toast notifications - Javascript library for non-blocking notifications. jQuery is required. The goal is to create a simple core library that can be customized and extended.
 
-[![Latest Stable Version](https://poser.pugx.org/lavrentiev/yii2-toastr/v/stable.svg)](https://packagist.org/packages/lavrentiev/yii2-toastr) [![Total Downloads](https://poser.pugx.org/lavrentiev/yii2-toastr/downloads.svg)](https://packagist.org/packages/lavrentiev/yii2-toastr) [![Latest Unstable Version](https://poser.pugx.org/lavrentiev/yii2-toastr/v/unstable.svg)](https://packagist.org/packages/lavrentiev/yii2-toastr) [![License](https://poser.pugx.org/lavrentiev/yii2-toastr/license.svg)](https://packagist.org/packages/lavrentiev/yii2-toastr)
+[![Latest Stable Version](https://poser.pugx.org/lavrentiev/yii2-toastr/v/stable)](https://packagist.org/packages/lavrentiev/yii2-toastr) [![Total Downloads](https://poser.pugx.org/lavrentiev/yii2-toastr/downloads)](https://packagist.org/packages/lavrentiev/yii2-toastr) [![Latest Unstable Version](https://poser.pugx.org/lavrentiev/yii2-toastr/v/unstable)](https://packagist.org/packages/lavrentiev/yii2-toastr) [![License](https://poser.pugx.org/lavrentiev/yii2-toastr/license)](https://packagist.org/packages/lavrentiev/yii2-toastr)
 
 Установка
 ---------
@@ -13,18 +13,17 @@ Simple javascript toast notifications - Javascript library for non-blocking noti
 Установка расширения через Composer, выполнить следующую команду:
 
 ```
-php composer.phar require --prefer-dist lavrentiev/yii2-toastr "1.0.0"
+php composer.phar require --prefer-dist lavrentiev/yii2-toastr "dev-testing"
 ```
 
 или внести изменения в секцию `require` в `composer.json` и выполнить `composer update`
 
 ```
-"lavrentiev/yii2-toastr": "1.0.0"
+"lavrentiev/yii2-toastr": "dev-testing"
 ```
 
-Описание и примеры
-------------------
-
+Допустимые параметры
+---------------------
 |Параметр|Значение по умолчанию|Допустимые значения|Описание
 |-------------|-----------|-----------|-----------|
 |type|`info`|`info`, `error`, `success`, `warning`|Тип уведомления|
@@ -33,42 +32,97 @@ php composer.phar require --prefer-dist lavrentiev/yii2-toastr "1.0.0"
 |options|`[]`|[Подробней...](https://github.com/CodeSeven/toastr)|Дополнительные опции|
 |clear|`false`|`true`, `false`|Позволяет убрать с экрана уведомления, показанные до вызова уведомления с этим параметром. |
 
-##### Стандартное применение
+Использование Toastr::widgets()
+-------------------------------
 ```php
-<?= lavrentiev\yii2toastr\Toastr::widget(
-            [
-                'type' => 'success',
-                'title' => 'Toast Notifications',
-                'message' => 'Simple javascript toast notifications'
-            ]
-        ) ?>
+lavrentiev\yii2toastr\Toastr::widget(
+    [
+        'type' => 'success',
+        'title' => 'Toast Notifications',
+        'message' => 'Simple javascript toast notifications',
+        'clear' => false,
+        'options' => [
+            "closeButton" => false,
+            "debug" => false,
+            "newestOnTop" => false,
+            "progressBar" => false,
+            "positionClass" => "toast-top-right",
+            "preventDuplicates" => false,
+            "onclick" => null,
+            "showDuration" => "300",
+            "hideDuration" => "1000",
+            "timeOut" => "5000",
+            "extendedTimeOut" => "1000",
+            "showEasing" => "swing",
+            "hideEasing" => "linear",
+            "showMethod" => "fadeIn",
+            "hideMethod" => "fadeOut"
+        ]
+    ]
+);
 ```
-##### Стандартное применение c использование дополнительных опций
+
+Использование ToastrFlash::widgets()
+------------------------------------
+Объявляем стандартные настройки уведомлений для `ToastrFlash`.
 ```php
-<?= lavrentiev\yii2toastr\Toastr::widget(
-            [
-                'type' => 'success',
-                'title' => 'Toast Notifications',
-                'message' => 'Simple javascript toast notifications',
-                'options' => [
-                    "closeButton" => false,
-                    "debug" => false,
-                    "newestOnTop" => false,
-                    "progressBar" => false,
-                    "positionClass" => "toast-top-right",
-                    "preventDuplicates" => false,
-                    "onclick" => null,
-                    "showDuration" => "300",
-                    "hideDuration" => "1000",
-                    "timeOut" => "5000",
-                    "extendedTimeOut" => "1000",
-                    "showEasing" => "swing",
-                    "hideEasing" => "linear",
-                    "showMethod" => "fadeIn",
-                    "hideMethod" => "fadeOut"
-                ]
-            ]
-        ) ?>
+<?= lavrentiev\yii2toastr\ToastrFlash::widget() ?>
+```
+Объявляем собственные настройки уведомлений для `ToastrFlash`.
+```php
+lavrentiev\yii2toastr\ToastrFlash::widget(
+    [
+        'options' => [
+            "closeButton" => false,
+            "debug" => false,
+            "newestOnTop" => false,
+            "progressBar" => false,
+            "positionClass" => "toast-top-right",
+            "preventDuplicates" => false,
+            "onclick" => null,
+            "showDuration" => "300",
+            "hideDuration" => "1000",
+            "timeOut" => "5000",
+            "extendedTimeOut" => "1000",
+            "showEasing" => "swing",
+            "hideEasing" => "linear",
+            "showMethod" => "fadeIn",
+            "hideMethod" => "fadeOut"
+        ]
+    ]
+);
+```
+Простое использование `ToastrFlash`.
+```php
+\Yii::$app->session->setFlash('success', [
+    'title' => 'Toast Notifications', 
+    'message' => 'Simple javascript toast notifications'
+]);
+```
+Использование `ToastrFlash` объявляем собственные настройки для уведомления.
+```php
+\Yii::$app->session->setFlash('success', [
+    'title' => 'Toast Notifications',
+    'message' => 'Simple javascript toast notifications',
+    'clear' => false,
+    'options' => [
+        "closeButton" => false,
+        "debug" => false,
+        "newestOnTop" => false,
+        "progressBar" => false,
+        "positionClass" => "toast-top-right",
+        "preventDuplicates" => false,
+        "onclick" => null,
+        "showDuration" => "300",
+        "hideDuration" => "1000",
+        "timeOut" => "5000",
+        "extendedTimeOut" => "1000",
+        "showEasing" => "swing",
+        "hideEasing" => "linear",
+        "showMethod" => "fadeIn",
+        "hideMethod" => "fadeOut"
+    ]
+]);
 ```
 Демонстрация
 -------------
