@@ -35,7 +35,7 @@ php composer.phar require --prefer-dist lavrentiev/yii2-toastr "dev-testing"
 Использование Toastr::widgets()
 -------------------------------
 ```php
-lavrentiev\yii2toastr\Toastr::widget(
+\lavrentiev\yii2toastr\Toastr::widget(
     [
         'type' => 'success',
         'title' => 'Toast Notifications',
@@ -66,11 +66,11 @@ lavrentiev\yii2toastr\Toastr::widget(
 ------------------------------------
 Объявляем стандартные настройки уведомлений для `ToastrFlash`.
 ```php
-<?= lavrentiev\yii2toastr\ToastrFlash::widget() ?>
+\lavrentiev\yii2toastr\ToastrFlash::widget();
 ```
 Объявляем собственные настройки уведомлений для `ToastrFlash`.
 ```php
-lavrentiev\yii2toastr\ToastrFlash::widget(
+\lavrentiev\yii2toastr\ToastrFlash::widget(
     [
         'options' => [
             "closeButton" => false,
