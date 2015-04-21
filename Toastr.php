@@ -24,9 +24,19 @@ class Toastr extends \yii\base\Widget
     public $message = 'Simple javascript toast notifications';
 
     /**
-     * Type Notifications
+     * Default Type Notifications
      */
     public $type = 'info';
+
+    /**
+     * All Type Notifications
+     */
+    public $typeAlert = [
+        'info'   => 'info',
+        'error'   => 'error',
+        'success' => 'success',
+        'warning' => 'warning'
+    ];
 
     /**
      * Options Notifications
@@ -43,8 +53,6 @@ class Toastr extends \yii\base\Widget
      */
     public function init()
     {
-        parent::init();
-
         $this->options = ($this->options) ? ', '. json_encode($this->options) : '';
 
         ToastrAsset::register($this->getView());

@@ -4,6 +4,7 @@
     "type": "yii2-extension",
     "keywords": ["yii2","extension","jquery","toastr","notification"],
     "homepage": "https://github.com/lavrentiev",
+    "forum": "http://yiiframework.ru/forum/viewtopic.php?f=9&t=23501",
     "license": "Apache-2.0",
     "authors": [
         {
