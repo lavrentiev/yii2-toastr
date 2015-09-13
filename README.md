@@ -26,9 +26,9 @@ php composer.phar require --prefer-dist lavrentiev/yii2-toastr "dev-master"
 "lavrentiev/yii2-toastr": "dev-master"
 ```
 
-### Произвольные уведомления Notification::widget()
+### Уведомления Notification::widget()
 
-![alt text](https://raw.githubusercontent.com/lavrentiev/yii2-toastr/master/screenshot/screenshot-1-2.png "Произвольные уведомления Notification::widget()")
+![alt text](https://raw.githubusercontent.com/lavrentiev/yii2-toastr/master/screenshot/screenshot-1-2.png "Уведомления Notification::widget()")
 
 ```php
 use lavrentiev\widgets\toastr\Notification;
@@ -79,7 +79,7 @@ Notification::widget([
 ```
 Также присутствует возможность настройки произвольного уведомления, по параметрам предусмотренным разработчиками [Toastr by CodeSeven](https://github.com/CodeSeven/toastr)
 
-![alt text](https://raw.githubusercontent.com/lavrentiev/yii2-toastr/master/screenshot/screenshot-3.png "Произвольные уведомления Notification::widget() - Настройки")
+![alt text](https://raw.githubusercontent.com/lavrentiev/yii2-toastr/master/screenshot/screenshot-3.png "Уведомления Notification::widget()")
 ```php
 Notification::widget([
     'type' => 'error',
@@ -104,6 +104,72 @@ Notification::widget([
     ]
 ]);
 ```
+
+### Уведомления NotificationFlash::widget()
+
+Подключение осуществляеться глобально допустим в layouts проекта.
+
+```php
+<?= \lavrentiev\widgets\toastr\NotificationFlash::widget() ?>
+```
+
+Также присутствует возможность настройки уведомлений, по параметрам предусмотренным разработчиками [Toastr by CodeSeven](https://github.com/CodeSeven/toastr)
+
+```php
+<?= \lavrentiev\widgets\toastr\NotificationFlash::widget([
+        'options' => [
+            "closeButton" => false,
+            "debug" => false,
+            "newestOnTop" => false,
+            "progressBar" => false,
+            "positionClass" => "toast-top-right",
+            "preventDuplicates" => false,
+            "onclick" => null,
+            "showDuration" => "300",
+            "hideDuration" => "1000",
+            "timeOut" => "5000",
+            "extendedTimeOut" => "1000",
+            "showEasing" => "swing",
+            "hideEasing" => "linear",
+            "showMethod" => "fadeIn",
+            "hideMethod" => "fadeOut"
+        ]
+    ]) ?>
+```
+
+![alt text](https://raw.githubusercontent.com/lavrentiev/yii2-toastr/master/screenshot/screenshot-4.png "Уведомления NotificationFlash::widget()")
+
+```php
+\Yii::$app->session->setFlash('error', 'This is the message');
+\Yii::$app->session->setFlash('success', 'This is the message');
+\Yii::$app->session->setFlash('info', 'This is the message');
+\Yii::$app->session->setFlash('warning', 'This is the message');
+```
+
+![alt text](https://raw.githubusercontent.com/lavrentiev/yii2-toastr/master/screenshot/screenshot-5.png "Уведомления NotificationFlash::widget()")
+
+```php
+\Yii::$app->session->setFlash('warning', ['Error 1', 'Error 2', 'Error 3']);
+\Yii::$app->session->setFlash('success', ['Error 1', 'Error 2', 'Error 3']);
+```
+
+Допустимые параметры
+---------------------
+|Параметр|Значение по умолчанию|Допустимые значения|Описание
+|-------------|-----------|-----------|-----------|
+|type|`info`|`info`, `error`, `success`, `warning`|Тип уведомления|
+|title|---|---|Заголовок уведомления|
+|message|`Simple javascript toast notifications`|---|Текст уведомления|
+|options|`[]`|[Подробней...](https://github.com/CodeSeven/toastr)|Дополнительные опции|
+
+Демонстрация
+-------------
+* Demo can be found at http://codeseven.github.io/toastr/demo.html
+
+Дополнительно
+-------------
+* [Toastr by CodeSeven](https://github.com/CodeSeven/toastr)
+* [Yii PHP Framework Version 2](https://github.com/yiisoft/yii2)
 
 ### Chat Room on Gitter
 
