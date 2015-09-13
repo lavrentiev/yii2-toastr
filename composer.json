@@ -4,7 +4,7 @@
   "keywords": ["yii2", "extension", "jquery", "toastr", "notification"],
   "type": "yii2-extension",
   "license": "BSD-3-Clause",
-  "homepage": "https://lavrentiev.github.io/yii2-toastr",
+  "homepage": "https://github.com/lavrentiev/yii2-toastr",
 
   "support": {
     "gitter": "https://gitter.im/lavrentiev/yii2-toastr",
