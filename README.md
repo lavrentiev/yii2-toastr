@@ -17,11 +17,19 @@ Simple javascript toast notifications - Javascript library for non-blocking noti
 Установка расширения через Composer, выполнить следующую команду:
 
 ```
+php composer.phar require --prefer-dist lavrentiev/yii2-toastr "2.0.0"
+```
+или (master)
+```
 php composer.phar require --prefer-dist lavrentiev/yii2-toastr "dev-master"
 ```
 
 или внести изменения в секцию `require` в `composer.json` и выполнить `composer update`
 
+```
+"lavrentiev/yii2-toastr": "2.0.0"
+```
+или (master)
 ```
 "lavrentiev/yii2-toastr": "dev-master"
 ```
