@@ -2,7 +2,7 @@
 /**
  * Yii2 - Javascript Toast Notifications
  * @link https://github.com/lavrentiev/yii2-toastr
- * @copyright Copyright (c) 2015 Eugene Lavrentiev (RyanTedder)
+ * @copyright Copyright (c) 2016 Eugene Lavrentiev (RyanTedder)
  */
 namespace lavrentiev\widgets\toastr;
 
@@ -46,7 +46,7 @@ class Notification extends Widget
 
         $this->title = ($this->title) ? Html::encode($this->title) : '';
 
-        $this->message = ($this->message) ? Html::encode($this->message) : \Yii::t('app', 'This is the message');
+        $this->message = ($this->message) ? Html::encode($this->message) : 'This is the message';
     }
 
     /**

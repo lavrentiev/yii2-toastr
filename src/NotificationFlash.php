@@ -2,7 +2,7 @@
 /**
  * Yii2 - Javascript Toast Notifications
  * @link https://github.com/lavrentiev/yii2-toastr
- * @copyright Copyright (c) 2015 Eugene Lavrentiev (RyanTedder)
+ * @copyright Copyright (c) 2016 Eugene Lavrentiev (RyanTedder)
  */
 namespace lavrentiev\widgets\toastr;
 
