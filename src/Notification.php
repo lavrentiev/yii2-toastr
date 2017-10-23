@@ -42,7 +42,7 @@ class Notification extends Widget
     {
         $this->view->registerAssetBundle(ToastrAsset::className());
 
-        $this->options = ($this->options) ? Json::encode($this->options) : [];
+        $this->options = ($this->options) ? Json::encode($this->options) : Json::encode([]);
 
         $this->title = ($this->title) ? Html::encode($this->title) : '';
 

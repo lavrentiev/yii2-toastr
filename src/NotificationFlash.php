@@ -37,7 +37,7 @@ class NotificationFlash extends Notification
 
             foreach ($data as $i => $message) {
 
-                Notification::widget(['type' => $type, 'message' => $message, 'options' => ($this->options) ? Json::decode($this->options) : []]);
+                Notification::widget(['type' => $type, 'message' => $message, 'options' => ($this->options) ? Json::encode($this->options) : Json::encode([])]);
 
             }
 
