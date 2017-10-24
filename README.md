@@ -19,7 +19,7 @@ composer require --prefer-dist lavrentiev/yii2-toastr "dev-master"
 ```
 или внести изменения в секцию `require` в `composer.json` и выполнить `composer update`
 ```
-"lavrentiev/yii2-toastr": "~2.0.0"
+"lavrentiev/yii2-toastr": "^2.0"
 ```
 или (master)
 ```
@@ -82,7 +82,7 @@ Notification::widget([
 ![alt text](https://raw.githubusercontent.com/lavrentiev/yii2-toastr/master/screenshot/screenshot-3.png "Уведомления Notification::widget()")
 ```php
 Notification::widget([
-    'type' => 'error',
+    'type' => Notification::TYPE_ERROR,
     'title' => 'Toast Notifications',
     'message' => 'Simple javascript toast notifications',
     'options' => [
@@ -90,7 +90,7 @@ Notification::widget([
         "debug" => false,
         "newestOnTop" => false,
         "progressBar" => false,
-        "positionClass" => "toast-top-right",
+        "positionClass" => Notification::POSITION_TOP_RIGHT,
         "preventDuplicates" => false,
         "onclick" => null,
         "showDuration" => "300",
@@ -117,24 +117,24 @@ Notification::widget([
 
 ```php
 <?= \lavrentiev\widgets\toastr\NotificationFlash::widget([
-        'options' => [
-            "closeButton" => false,
-            "debug" => false,
-            "newestOnTop" => false,
-            "progressBar" => false,
-            "positionClass" => "toast-top-right",
-            "preventDuplicates" => false,
-            "onclick" => null,
-            "showDuration" => "300",
-            "hideDuration" => "1000",
-            "timeOut" => "5000",
-            "extendedTimeOut" => "1000",
-            "showEasing" => "swing",
-            "hideEasing" => "linear",
-            "showMethod" => "fadeIn",
-            "hideMethod" => "fadeOut"
-        ]
-    ]) ?>
+    'options' => [
+        "closeButton" => true,
+        "debug" => false,
+        "newestOnTop" => false,
+        "progressBar" => false,
+        "positionClass" => \lavrentiev\widgets\toastr\NotificationFlash::POSITION_TOP_RIGHT,
+        "preventDuplicates" => false,
+        "onclick" => null,
+        "showDuration" => "300",
+        "hideDuration" => "1000",
+        "timeOut" => "5000",
+        "extendedTimeOut" => "1000",
+        "showEasing" => "swing",
+        "hideEasing" => "linear",
+        "showMethod" => "fadeIn",
+        "hideMethod" => "fadeOut"
+    ]
+]) ?>
 ```
 
 ![alt text](https://raw.githubusercontent.com/lavrentiev/yii2-toastr/master/screenshot/screenshot-4.png "Уведомления NotificationFlash::widget()")
@@ -161,6 +161,28 @@ Notification::widget([
 |title|---|---|Заголовок уведомления|
 |message|`Simple javascript toast notifications`|---|Текст уведомления|
 |options|`[]`|[Подробней...](https://github.com/CodeSeven/toastr)|Дополнительные опции|
+
+**Допустимые константы типов:**
+```
+TYPE_INFO = 'info'
+TYPE_ERROR = 'error'
+TYPE_SUCCESS = 'success'
+TYPE_WARNING = 'warning'
+```
+
+**Допустимые константы положения:**
+```
+POSITION_TOP_RIGHT = 'toast-top-right';
+POSITION_TOP_LEFT = 'toast-top-left';
+POSITION_TOP_CENTER = 'toast-top-center';
+POSITION_TOP_FULL_WIDTH = 'toast-top-full-width';
+
+POSITION_BOTTOM_RIGHT = 'toast-bottom-right';
+POSITION_BOTTOM_LEFT = 'toast-bottom-left';
+POSITION_BOTTOM_CENTER = 'toast-bottom-center';
+POSITION_BOTTOM_FULL_WIDTH = 'toast-bottom-full-width';
+```
+
 
 Демонстрация
 -------------
