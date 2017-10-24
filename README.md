@@ -9,23 +9,15 @@ Simple javascript toast notifications - Javascript library for non-blocking noti
 ---------
 Расширение устанавливается с помощью Composer интсрукция по установке [Composer](http://getcomposer.org/doc/00-intro.md#installation-nix)
 
-**Требуемые зависимости для расширения:**
-- [Yii PHP Framework Version 2](https://github.com/yiisoft/yii2) >= `2.0.6`
-- [Toastr by CodeSeven](https://github.com/CodeSeven/toastr) = `v2.1.1`
-- [PHP](http://php.net/downloads.php) >= `5.4.0`
-
 Установка расширения через Composer, выполнить следующую команду:
-
 ```
-php composer.phar require --prefer-dist lavrentiev/yii2-toastr "~2.0.0"
+composer require --prefer-dist lavrentiev/yii2-toastr
 ```
 или (master)
 ```
-php composer.phar require --prefer-dist lavrentiev/yii2-toastr "dev-master"
+composer require --prefer-dist lavrentiev/yii2-toastr "dev-master"
 ```
-
 или внести изменения в секцию `require` в `composer.json` и выполнить `composer update`
-
 ```
 "lavrentiev/yii2-toastr": "~2.0.0"
 ```
@@ -178,9 +170,3 @@ Notification::widget([
 -------------
 * [Toastr by CodeSeven](https://github.com/CodeSeven/toastr)
 * [Yii PHP Framework Version 2](https://github.com/yiisoft/yii2)
-
-### Chat Room on Gitter
-
-@lavrentiev has just created a chat room. You can visit it here: [https://gitter.im/lavrentiev/yii2-toastr](https://gitter.im/lavrentiev/yii2-toastr).
-
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/lavrentiev/yii2-toastr)
