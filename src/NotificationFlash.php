@@ -3,6 +3,7 @@
 namespace lavrentiev\widgets\toastr;
 
 use yii\helpers\Html;
+use yii\helpers\Json;
 
 class NotificationFlash extends NotificationBase
 {
@@ -22,7 +23,11 @@ class NotificationFlash extends NotificationBase
             $data = (array) $data;
 
             foreach ($data as $i => $message) {
-                Notification::widget(['type' => Html::encode($type), 'message' => Html::encode($message), 'options' => $this->options]);
+                Notification::widget([
+                    'type' => Html::encode($type),
+                    'message' => Html::encode($message),
+                    'options' => Json::decode((string) $this->options),
+                ]);
             }
 
             $this->session->removeFlash($type);
