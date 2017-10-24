@@ -1,47 +1,31 @@
 <?php
-/**
- * Yii2 - Javascript Toast Notifications
- * @link https://github.com/lavrentiev/yii2-toastr
- * @copyright Copyright (c) 2016 Eugene Lavrentiev (RyanTedder)
- */
+
 namespace lavrentiev\widgets\toastr;
 
-use yii\helpers\Json;
+use yii\helpers\Html;
 
-/**
- * Class NotificationFlash
- * @package lavrentiev\widgets\toastr
- */
-class NotificationFlash extends Notification
+class NotificationFlash extends NotificationBase
 {
-    /**
-     * @inheritdoc
-     */
-    public function init()
-    {
-        parent::init();
-    }
+    /** @var object $session */
+    private $session;
 
     /**
      * @inheritdoc
      */
     public function run()
     {
-        $session = \Yii::$app->session;
+        $this->session = \Yii::$app->session;
 
-        $flashes = $session->getAllFlashes();
+        $flashes = $this->session->getAllFlashes();
 
         foreach ($flashes as $type => $data) {
-
             $data = (array) $data;
 
             foreach ($data as $i => $message) {
-
-                Notification::widget(['type' => $type, 'message' => $message, 'options' => ($this->options) ? Json::encode($this->options) : Json::encode([])]);
-
+                Notification::widget(['type' => Html::encode($type), 'message' => Html::encode($message), 'options' => $this->options]);
             }
 
-            $session->removeFlash($type);
+            $this->session->removeFlash($type);
         }
     }
 }
