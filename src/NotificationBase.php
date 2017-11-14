@@ -60,8 +60,13 @@ class NotificationBase extends Widget
 
         $this->message = ($this->message) ? $this->message : $this->messageDefault;
 
-        if ($this->messageType == self::MESSAGE_TYPE_TEXT){
-            $this->message = Html::encode($this->message);
+        switch ($this->messageType){
+            case self::MESSAGE_TYPE_RAW:
+                $this->message = str_replace('"','\"', $this->message);
+                break;
+            case self::MESSAGE_TYPE_TEXT:
+                $this->message = Html::encode($this->message);
+                break;
         }
 
         $this->options = is_array($this->options) ?
