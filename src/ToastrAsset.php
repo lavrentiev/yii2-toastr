@@ -10,13 +10,15 @@ class ToastrAsset extends AssetBundle
     public $sourcePath = '@bower/toastr';
 
     /** @var array $css */
+	
     public $css = [
-        YII_ENV_DEV ? 'toastr.css' : 'toastr.min.css',
+      
     ];
 
     /** @var array $js */
+	
     public $js = [
-        YII_ENV_DEV ? 'toastr.js' : 'toastr.min.js',
+       
     ];
 
     /** @var array $depends */
@@ -24,4 +26,14 @@ class ToastrAsset extends AssetBundle
         'yii\web\YiiAsset',
         'yii\bootstrap\BootstrapAsset',
     ];
+	
+	public function init()
+    {
+        $min = YII_ENV_DEV ? '' : '.min';
+        $this->css[]='toastr' . $min . '.css';
+        $this->js[]='toastr' . $min . '.js';
+        
+
+        parent::init();
+    }
 }
