@@ -14,6 +14,8 @@ class NotificationBase extends Widget
     /** @var string $message */
     public $message;
 
+    public $messageType = self::MESSAGE_TYPE_TEXT;
+
     /** @var string $message */
     public $messageDefault = 'This is the message';
 
@@ -28,6 +30,9 @@ class NotificationBase extends Widget
 
     /** @var array $options */
     public $options = [];
+
+    const MESSAGE_TYPE_TEXT = 'text';
+    const MESSAGE_TYPE_RAW = 'raw';
 
     const TYPE_INFO = 'info';
     const TYPE_ERROR = 'error';
@@ -53,8 +58,16 @@ class NotificationBase extends Widget
 
         $this->title = is_string($this->title) ? Html::encode($this->title) : null;
 
-        $this->message = ($this->message) ?
-            Html::encode($this->message) : Html::encode($this->messageDefault);
+        $this->message = ($this->message) ? $this->message : $this->messageDefault;
+
+        switch ($this->messageType){
+            case self::MESSAGE_TYPE_RAW:
+                $this->message = str_replace('"','\"', $this->message);
+                break;
+            case self::MESSAGE_TYPE_TEXT:
+                $this->message = Html::encode($this->message);
+                break;
+        }
 
         $this->options = is_array($this->options) ?
             Json::encode($this->options) : Json::encode([]);
